@@ -1,0 +1,10 @@
+This is a simple text file that will be used to test the components built out in the wc.py file in this same directory. The text below was randomly generated for this purpose.
+
+Blorfwizzle zattoongle farfnumple, when wimble snapsnarg groddlequib. Glargnib flutenoodle yarblequinch, yipzop doozle wompus. 
+Ploofle drangleflick gartrooble widdlebix! Quonfizzle wurblefrem snizzbot crunfle thordbiddle.
+
+Fizbop slorble, kleffwarble zomgink; drizzap fleebloffel glonkfest zazzlefib! Wibblesnap glartook, yornbiff snurglepliff 
+blambop! Gribblejoink flarnick frotzalink, weepwomp zonklefidd bopshark.
+
+Farbledorp, quibbleflutz, snofferglerk whorple tizzlebang froof! Snorf woogle tronkziffle grabtoozel flabblefuzz zarnblop. 
+Yumpadoo glizzpiff narnstick forboon quazzlefiffle.
