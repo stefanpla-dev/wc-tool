@@ -26,14 +26,18 @@ def count_lines(file_path):
 # At first was counting the number of \n characters, but this could count empty lines as a line (which I, the author, personally do not want). This also requires the entire file be loaded before counting instead of summing the lines as you go - more memory efficient. 
 
 def count_words(file_path):
+    word_count = 0
     try:
         with open (file_path, 'r', encoding = 'utf-8') as file:
-            content = file.read()
-            words = content.split()
-            return len(words)
+            for line in file:
+                words = line.split()
+                word_count += len(words)
+        return word_count
     except FileNotFoundError:
         print(f"wc-tool: {file_path}: No such file or directory.")
         sys.exit(1)
+# Each new method is easier to write than the last seeing as they all riff on each other a bit. 
+# Was originally reading the entire file into memeory, and using a .split() method to count the length of the file, but this could be space and time inefficient if the file were enormous (the test file in this directory is very small). Optimized above.
 
 def main():
     parser = argparse.ArgumentParser(description = "wc-tool - word, line, character and byte count")
