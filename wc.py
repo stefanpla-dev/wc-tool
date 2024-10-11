@@ -29,10 +29,7 @@ def count_words(file_path):
     word_count = 0
     try:
         with open (file_path, 'r', encoding = 'utf-8') as file:
-            for line in file:
-                words = line.split()
-                word_count += len(words)
-        return word_count
+            return sum(len(line.split()) for line in file)
     except FileNotFoundError:
         print(f"wc-tool: {file_path}: No such file or directory.")
         sys.exit(1)
@@ -43,9 +40,7 @@ def count_characters(file_path):
     character_count = 0
     try:
         with open(file_path, 'r', encoding = 'utf-8') as file:
-            for line in file:
-                character_count += len(line)
-            return character_count
+            return sum(len(line) for line in file)
     except FileNotFoundError:
         print(f"wc-tool: {file_path}: No such file or directory.")
         sys.exit(1)
