@@ -25,16 +25,26 @@ def count_lines(file_path):
 # Very similar to count_bytes method. Differences here are opening the file in text mode ('r') so line breaks can be counted like characters.
 # At first was counting the number of \n characters, but this could count empty lines as a line (which I, the author, personally do not want). This also requires the entire file be loaded before counting instead of summing the lines as you go - more memory efficient. 
 
+def count_words(file_path):
+    try:
+        with open (file_path, 'r', encoding = 'utf-8') as file:
+            content = file.read()
+            words = content.split()
+            return len(words)
+    except FileNotFoundError:
+        print(f"wc-tool: {file_path}: No such file or directory.")
+        sys.exit(1)
 
 def main():
     parser = argparse.ArgumentParser(description = "wc-tool - word, line, character and byte count")
     parser.add_argument("-c", action = "store_true", help = "Count and print the number of bytes in a file.")
     parser.add_argument("-l", action = "store_true", help = "Count and print the number of lines in a file.")
+    parser.add_argument("-w", action = "store_true", help = "Count and print the number of words in a file.")
     parser.add_argument("file", nargs="?", help = "Path to the file to process.")
 
     args = parser.parse_args()
 
-    if not (args.c or args.l):
+    if not (args.c or args.l or args.w):
         print("Please provide at least one option (-c or -l).")
         sys.exit(1)
 
@@ -50,6 +60,9 @@ def main():
     if args.c:
         byte_count = count_bytes(args.file)
         output.append(f"{byte_count}")
+    if args.w:
+        word_count = count_words(args.file)
+        output.append(f"{word_count}")
 
     output.append(args.file)
     print(" ".join(output))
