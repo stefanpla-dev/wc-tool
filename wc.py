@@ -39,17 +39,29 @@ def count_words(file_path):
 # Each new method is easier to write than the last seeing as they all riff on each other a bit. 
 # Was originally reading the entire file into memeory, and using a .split() method to count the length of the file, but this could be space and time inefficient if the file were enormous (the test file in this directory is very small). Optimized above.
 
+def count_characters(file_path):
+    character_count = 0
+    try:
+        with open(file_path, 'r', encoding = 'utf-8') as file:
+            for line in file:
+                character_count += len(line)
+            return character_count
+    except FileNotFoundError:
+        print(f"wc-tool: {file_path}: No such file or directory.")
+        sys.exit(1)
+
 def main():
     parser = argparse.ArgumentParser(description = "wc-tool - word, line, character and byte count")
     parser.add_argument("-c", action = "store_true", help = "Count and print the number of bytes in a file.")
     parser.add_argument("-l", action = "store_true", help = "Count and print the number of lines in a file.")
     parser.add_argument("-w", action = "store_true", help = "Count and print the number of words in a file.")
+    parser.add_argument("-m", action = "store_true", help = "Count and print the number of characters in a file.")
     parser.add_argument("file", nargs="?", help = "Path to the file to process.")
 
     args = parser.parse_args()
 
-    if not (args.c or args.l or args.w):
-        print("Please provide at least one option (-c or -l).")
+    if not (args.c or args.l or args.w or args.m):
+        print("Please provide at least one option (-c, -l, -w, or -m).")
         sys.exit(1)
 
     if not args.file:
@@ -67,6 +79,9 @@ def main():
     if args.w:
         word_count = count_words(args.file)
         output.append(f"{word_count}")
+    if args.m:
+        character_count = count_characters(args.file)
+        output.append(f"{character_count}")
 
     output.append(args.file)
     print(" ".join(output))
@@ -74,7 +89,7 @@ def main():
 # Initializes a new argument parser object and provides a description of the program when the user invokes the --help option.
 # Specifies the -c option to count bytes. If -c is present in the command line, args.c will be set to True. False otherwise. This is true for other functionality as well (line counts, word counts, character counts).
 # Specifies an optional file argument. Will want to support standard input as well.
-# Processes an object where each attribute (-c, -l, -w or file) corresponds to a command line argument or option.
+# Processes an object where each attribute (-c, -l, -w, -m or file) corresponds to a command line argument or option.
 # Output to the command line depends on the action performed and will only print what is specifically requested by the user.
 
 
