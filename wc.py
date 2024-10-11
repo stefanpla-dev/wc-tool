@@ -74,7 +74,7 @@ def main():
 # Initializes a new argument parser object and provides a description of the program when the user invokes the --help option.
 # Specifies the -c option to count bytes. If -c is present in the command line, args.c will be set to True. False otherwise. This is true for other functionality as well (line counts, word counts, character counts).
 # Specifies an optional file argument. Will want to support standard input as well.
-# Processes an object where each attribute (-c, -l or file) corresponds to a command line argument or option.
+# Processes an object where each attribute (-c, -l, -w or file) corresponds to a command line argument or option.
 # Output to the command line depends on the action performed and will only print what is specifically requested by the user.
 
 
