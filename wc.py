@@ -49,6 +49,7 @@ def count_characters(file_path):
     except FileNotFoundError:
         print(f"wc-tool: {file_path}: No such file or directory.")
         sys.exit(1)
+# Skipped the step where the entire file was loaded into memory first. That's called learning from the past, henny.
 
 def main():
     parser = argparse.ArgumentParser(description = "wc-tool - word, line, character and byte count")
@@ -61,8 +62,9 @@ def main():
     args = parser.parse_args()
 
     if not (args.c or args.l or args.w or args.m):
-        print("Please provide at least one option (-c, -l, -w, or -m).")
-        sys.exit(1)
+        args.c = True
+        args.l = True
+        args.w = True
 
     if not args.file:
         print("Please provide a file to process.")
@@ -91,7 +93,7 @@ def main():
 # Specifies an optional file argument. Will want to support standard input as well.
 # Processes an object where each attribute (-c, -l, -w, -m or file) corresponds to a command line argument or option.
 # Output to the command line depends on the action performed and will only print what is specifically requested by the user.
-
+# Modified the main function to, in the spirit of the Linux wc tool, print the byte, line, and word counts when no options are provided by setting the values of -c, -l, and -w to True when nothing is provided.
 
 if __name__ == "__main__":
     main()
