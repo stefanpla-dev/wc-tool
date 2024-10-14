@@ -23,7 +23,7 @@ def count_lines(file_path):
         print(f"wc-tool: {file_path}: No such file or directory.")
         sys.exit(1)
 # Very similar to count_bytes method. Differences here are opening the file in text mode ('r') so line breaks can be counted like characters.
-# At first was counting the number of \n characters, but this could count empty lines as a line (which I, the author, personally do not want). This also requires the entire file be loaded before counting instead of summing the lines as you go - more memory efficient. 
+# At first was counting the number of \n characters, but this could count empty lines as a line (which I, the author, personally do not want). This also requires the entire file be loaded before counting instead of summing the lines as you go - more memory efficient.
 
 def count_words(file_path):
     word_count = 0
