@@ -10,4 +10,4 @@ While some work has already gone into optimizing the methods as they were origin
 
 ----
 10/14/24
-A hallmark of the Linux wc-tool is its ability to read files through standard input (that is, without providing a file path at all and instead inputting directly into the command-line). The author (yours truly) is currently conducting research into how this functionality could be implemented to achieve true mimicry of the Linux wc-tool.
+A hallmark of the Linux wc-tool is its ability to read files through standard input (that is, without providing a file path at all and instead inputting directly into the command-line or piping data from another command). The author (yours truly) is currently conducting research into how this functionality could be implemented to achieve true mimicry of the Linux wc-tool.
