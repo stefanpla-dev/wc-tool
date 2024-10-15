@@ -1,5 +1,5 @@
 # wc-tool
-This is a command line tool designed to mimic the Linux wc-tool in both functionality and user experience, undertaken as a learning exercise. 
+This is a command line tool designed to mimic the Unix wc-tool in both functionality and user experience, undertaken as a learning exercise. 
 
 The user experience in the command-line is made possible by a command-line arguments object created by argparse. This object stores flags and file path inputs provided by the user either via a file path or standard input (that is, without providing a file path at all and instead inputting directly into the command-line or piping data from another command. Mimicing this functionality required some research as to what standard input even is for the author, yours truly).
 
